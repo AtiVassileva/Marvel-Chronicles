@@ -1,4 +1,4 @@
-const charactersURL = 'https://gateway.marvel.com:443/v1/public/comics?ts=1&apikey=67ab9aa2a29d896368e8047429caf05e&hash=d1f82078d832b8a13c1f0fbbd964746e';
+const charactersURL = 'https://gateway.marvel.com:443/v1/public/characters?ts=1&apikey=67ab9aa2a29d896368e8047429caf05e&hash=d1f82078d832b8a13c1f0fbbd964746e';
 
 const requestOptions = {
     method: 'GET',

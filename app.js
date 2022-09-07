@@ -1,26 +1,22 @@
 import * as characterService from './js/characterService.js';
 
 const container = document.getElementsByClassName('container')[0];
+const charactersBtn = document.getElementsByClassName('nav-btn')[0];
 
-window.addEventListener('load', (e) => {
+charactersBtn.addEventListener('click', (e) => {
+    container.innerHTML = '';
     e.preventDefault();
 
     let characters = [];
 
-    setTimeout(() => {
-        characterService.getCharacterList()
-        .then(result => result.map(x => {
-            console.log(x);
-            characters.push(x);
-        }));
-    }, 5000);
-     
-
-    console.log(characters);
+    characterService.getCharacterList()
+    .then(response => response.map( (x) => characters.push(x)))
     
-    characters.map((index, x) => {
-        container.innerHTML += returnCard(x.thumbnail.path, x.thumbnail.extension, x.title, x.description);
-    })
+    setTimeout(() => {
+        characters.map((x) => {
+            container.innerHTML += returnCard(x.thumbnail.path, x.thumbnail.extension, x.name, x.description);
+        })
+    }, 1500);
 });
 
 const returnCard = (imagePath, imageExtension, title, description) => {
