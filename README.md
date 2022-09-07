@@ -1,2 +1,2 @@
-# NBA-Master
-Web application containing all kind of information about NBA.
+# Marvel Universe Wiki
+Web application containing all kind of information about Marvel.
