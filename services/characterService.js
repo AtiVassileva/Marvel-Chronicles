@@ -13,7 +13,7 @@ export const getCharacterList = async () => {
 
     await fetch(charactersURL, requestOptions)
         .then(response => response.json())
-        .then(r =>  characters = r.data.results);
+        .then(result =>  characters = result.data.results);
 
     return characters;
-}
+};
