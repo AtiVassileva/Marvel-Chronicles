@@ -1,6 +1,8 @@
 import * as characterService from './services/characterService.js';
 import * as comicService from './services/comicService.js';
 import * as movieService from './services/movieService.js';
+import * as storyService from './services/storyService.js';
+
 import * as htmlCreator from './js/htmlCreator.js';
 
 const container = document.getElementsByClassName('container')[0];
@@ -8,6 +10,7 @@ const container = document.getElementsByClassName('container')[0];
 const charactersBtn = document.getElementsByClassName('nav-btn')[0];
 const comicsBtn = document.getElementsByClassName('nav-btn')[1];
 const moviesBtn = document.getElementsByClassName('nav-btn')[2];
+const storiesBtn = document.getElementsByClassName('nav-btn')[3];
 
 charactersBtn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -23,7 +26,7 @@ charactersBtn.addEventListener('click', (e) => {
     characters.map((x) => {
       container.innerHTML += htmlCreator.returnCard(x.thumbnail.path, x.thumbnail.extension, x.name, x.description);
     });
-  }, 1000);
+  }, 2000);
 });
 
 moviesBtn.addEventListener('click', (e) => {
@@ -40,7 +43,7 @@ moviesBtn.addEventListener('click', (e) => {
     movies.map((x) => {
       container.innerHTML += htmlCreator.returnCard(x.thumbnail.path, x.thumbnail.extension, x.title, x.description);
     })
-  }, 1000);
+  }, 2000);
 });
 
 comicsBtn.addEventListener('click', (e) => {
@@ -57,5 +60,23 @@ comicsBtn.addEventListener('click', (e) => {
     comics.map((x) => {
       container.innerHTML += htmlCreator.returnCard(x.thumbnail.path, x.thumbnail.extension, x.title, x.description);
     })
-  }, 1000);
+  }, 2000);
+});
+
+storiesBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  container.innerHTML = '';
+
+  let stories = [];
+
+  storyService.getStoriesList()
+  .then(response => response.map((x) => stories.push(x)));
+
+  setTimeout(() => {
+    const path = 'https://i.annihil.us/u/prod/marvel/images/OpenGraph-TW-1200x630';
+    stories.map((x) => {
+      container.innerHTML += htmlCreator.returnCard(path, 'jpg', x.title, x.description);
+    })
+  }, 2000);
 });

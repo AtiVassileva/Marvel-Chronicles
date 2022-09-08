@@ -17,6 +17,33 @@ body {
   background: linear-gradient(to right, #000000, #8f2b2b, #9a0505);
 }
 
+nav {
+  background: black;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  top: 0;
+  margin-bottom: 40px;
+}
+
+.nav-btn {
+    background: #9a0505;
+    color: rgb(255, 249, 249);
+    text-transform: uppercase;
+    font-size: 20px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+.nav-btn:hover {
+  cursor: pointer;
+  background: #000000;
+  border: 2px solid #9a0505;
+}
+
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -40,11 +67,8 @@ img {
   box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
   border-radius: 1em;
   background: #ECE9E6;
-background: linear-gradient(to right, #FFFFFF, #ECE9E6);
-
+  background: linear-gradient(to right, #FFFFFF, #ECE9E6);
 }
-
-
 
 .card__body {
   padding: 1rem;
@@ -52,7 +76,6 @@ background: linear-gradient(to right, #FFFFFF, #ECE9E6);
   flex-direction: column;
   gap: .5rem;
 }
-
 
 .tag {
   align-self: flex-start;
