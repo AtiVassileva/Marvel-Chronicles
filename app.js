@@ -6,6 +6,7 @@ import * as storyService from './services/storyService.js';
 import * as htmlCreator from './js/htmlCreator.js';
 
 const container = document.getElementsByClassName('container')[0];
+const loader = document.getElementsByClassName('loader')[0];
 
 const charactersBtn = document.getElementsByClassName('nav-btn')[0];
 const comicsBtn = document.getElementsByClassName('nav-btn')[1];
@@ -22,11 +23,16 @@ charactersBtn.addEventListener('click', (e) => {
   characterService.getCharacterList()
     .then(response => response.map((x) => characters.push(x)));
 
+  loader.classList.replace('hidden', 'active');
+
   setTimeout(() => {
     characters.map((x) => {
       container.innerHTML += htmlCreator.returnCard(x.thumbnail.path, x.thumbnail.extension, x.name, x.description);
     });
+
+    loader.classList.replace('active', 'hidden');
   }, 2000);
+
 });
 
 moviesBtn.addEventListener('click', (e) => {
@@ -37,12 +43,16 @@ moviesBtn.addEventListener('click', (e) => {
   let movies = [];
 
   movieService.getMoviesList()
-  .then(response => response.map((x) => movies.push(x)));
+    .then(response => response.map((x) => movies.push(x)));
+
+  loader.classList.replace('hidden', 'active');
 
   setTimeout(() => {
     movies.map((x) => {
       container.innerHTML += htmlCreator.returnCard(x.thumbnail.path, x.thumbnail.extension, x.title, x.description);
-    })
+    });
+
+    loader.classList.replace('active', 'hidden');
   }, 2000);
 });
 
@@ -54,12 +64,16 @@ comicsBtn.addEventListener('click', (e) => {
   let comics = [];
 
   comicService.getComicsList()
-  .then(response => response.map((x) => comics.push(x)));
+    .then(response => response.map((x) => comics.push(x)));
+
+  loader.classList.replace('hidden', 'active');
 
   setTimeout(() => {
     comics.map((x) => {
       container.innerHTML += htmlCreator.returnCard(x.thumbnail.path, x.thumbnail.extension, x.title, x.description);
-    })
+    });
+
+    loader.classList.replace('active', 'hidden');
   }, 2000);
 });
 
@@ -71,12 +85,16 @@ storiesBtn.addEventListener('click', (e) => {
   let stories = [];
 
   storyService.getStoriesList()
-  .then(response => response.map((x) => stories.push(x)));
+    .then(response => response.map((x) => stories.push(x)));
+
+  loader.classList.replace('hidden', 'active');
 
   setTimeout(() => {
     const path = 'https://i.annihil.us/u/prod/marvel/images/OpenGraph-TW-1200x630';
     stories.map((x) => {
       container.innerHTML += htmlCreator.returnCard(path, 'jpg', x.title, x.description);
-    })
+    });
+
+    loader.classList.replace('active', 'hidden');
   }, 2000);
 });
