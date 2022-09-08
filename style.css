@@ -46,7 +46,7 @@ body {
   }
 }
 
-nav {
+.navigation {
   background: black;
   width: 100%;
   display: flex;
@@ -244,4 +244,19 @@ img {
 
 .user__info>small {
   color: #666;
+}
+
+.footer {
+  background: black;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  bottom: 0;
+  margin: 0px;
+}
+
+.footer-text {
+  font-size: 16px;
+  color:rgb(255, 249, 249);
 }
