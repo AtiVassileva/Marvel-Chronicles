@@ -17,6 +17,8 @@ body {
   background: linear-gradient(to right, #000000, #8f2b2b, #9a0505);
 }
 
+/* Loader */
+
 .loader.active {
   display: block;
 }
@@ -26,8 +28,8 @@ body {
 }
 
 .loader {
-  border: 10px solid #0c0102; /* Light grey */
-  border-top: 10px solid #9a0505; /* Blue */
+  border: 10px solid #0c0102; 
+  border-top: 10px solid #9a0505; 
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -46,7 +48,7 @@ nav {
   justify-content: space-between;
   padding: 40px;
   top: 0;
-  margin-bottom: 40px;
+  margin: 0px;
 }
 
 .nav-btn {
@@ -71,8 +73,79 @@ nav {
   color:rgb(255, 249, 249);
   cursor: pointer;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 20px;
 }
+
+.carousel-wrapper {
+  height: 750px;
+  position: relative;
+  width: 100%;
+  display: block;
+  margin: 0px auto ;
+  border: 2px solid black;
+  margin-bottom: 50px;
+}
+
+.carousel-item {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 25px 50px;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.arrow{
+  border: solid rgb(255, 255, 255);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 12px;
+}
+.arrow-prev {
+  left: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(135deg);
+
+}
+.arrow-next {
+  right: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+[id^= "item"] {
+  display: none;
+}
+.item-1 {
+  z-index: 2;
+  opacity: 1;
+  background: url('./img/img2.jpg');
+  background-size: cover;
+}
+.item-2 {
+  background: url('./img/img1.jpg');
+  background-size: cover;
+}
+.item-3 {
+  background: url('./img/img3.jpg');
+  background-size: cover;
+}
+
+*:target ~ .item-1{
+  opacity: 0;
+}
+#item-1:target ~ .item-1 {
+  opacity: 1;
+
+}
+#item-2:target ~ .item-2, #item-3:target ~ .item-3 {
+  z-index: 3;
+  opacity: 1;
+} 
+
 .container {
   display: flex;
   flex-wrap: wrap;
