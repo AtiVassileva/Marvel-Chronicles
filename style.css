@@ -122,15 +122,15 @@ nav {
 .item-1 {
   z-index: 2;
   opacity: 1;
-  background: url('./img/img2.jpg');
-  background-size: cover;
-}
-.item-2 {
   background: url('./img/img1.jpg');
   background-size: cover;
 }
+.item-2 {
+  background: url('./img/img2.jpg');
+  background-size: cover;
+}
 .item-3 {
-  background: url('./img/img3.jpg');
+  background: url('./img/img5.jpg');
   background-size: cover;
 }
 
