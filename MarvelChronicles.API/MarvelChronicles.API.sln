@@ -6,6 +6,11 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelChronicles.API", "MarvelChronicles.API\MarvelChronicles.API.csproj", "{BC7B9011-A9B9-4B1F-B333-F7C36FD2592C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelChronicles.Data", "MarvelChronicles.Data\MarvelChronicles.Data.csproj", "{2D5B86C5-9528-4FE5-97BC-98C5BE6289EB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{58B4F3C1-93BE-4116-85AE-EF246C3350BD} = {58B4F3C1-93BE-4116-85AE-EF246C3350BD}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelChronicles.Models", "MarvelChronicles.Models\MarvelChronicles.Models.csproj", "{58B4F3C1-93BE-4116-85AE-EF246C3350BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,10 @@ Global
 		{2D5B86C5-9528-4FE5-97BC-98C5BE6289EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D5B86C5-9528-4FE5-97BC-98C5BE6289EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D5B86C5-9528-4FE5-97BC-98C5BE6289EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58B4F3C1-93BE-4116-85AE-EF246C3350BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58B4F3C1-93BE-4116-85AE-EF246C3350BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58B4F3C1-93BE-4116-85AE-EF246C3350BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58B4F3C1-93BE-4116-85AE-EF246C3350BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
