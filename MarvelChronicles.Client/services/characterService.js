@@ -1,9 +1,10 @@
-const charactersURL = 'https://gateway.marvel.com:443/v1/public/characters?ts=1&apikey=67ab9aa2a29d896368e8047429caf05e&hash=d1f82078d832b8a13c1f0fbbd964746e';
+const charactersURL = 'https://localhost:7267/api/Characters';
 
 const requestOptions = {
     method: 'GET',
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
     },
     mode: 'cors'
 };
@@ -13,7 +14,7 @@ export const getCharacterList = async () => {
 
     await fetch(charactersURL, requestOptions)
         .then(response => response.json())
-        .then(result =>  characters = result.data.results);
+        .then(result =>  characters = result);
 
     return characters;
 };

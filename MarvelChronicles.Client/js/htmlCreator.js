@@ -1,14 +1,12 @@
-export const returnCard = (imagePath, imageExtension, title, description) => {
+export const returnCard = (imageURL, title, description, labelText) => {
     return `
         <div class="card">
             <div class="card__header">
-            <img src=${imagePath.includes('image_not_available')
-            ? 'https://image.api.playstation.com/vulcan/img/rnd/202111/1814/n7UmKNPcZKKZNb8J1PxPWgsa.jpg'
-            : imagePath + "." + imageExtension} 
+            <img src=${imageURL} 
 alt="card__image" class="card__image" width="600" height="300">
 </div>
 <div class="card__body">
-  <span class="tag tag-blue">Comic</span>
+  <span class="tag tag-blue">${labelText}</span>
   <h4>${title}</h4>
   <p>${!description ? 'No description available.' : description}</p>
 </div>
