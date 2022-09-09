@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelChronicles.API", "MarvelChronicles.API\MarvelChronicles.API.csproj", "{BC7B9011-A9B9-4B1F-B333-F7C36FD2592C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2D5B86C5-9528-4FE5-97BC-98C5BE6289EB} = {2D5B86C5-9528-4FE5-97BC-98C5BE6289EB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelChronicles.Data", "MarvelChronicles.Data\MarvelChronicles.Data.csproj", "{2D5B86C5-9528-4FE5-97BC-98C5BE6289EB}"
 	ProjectSection(ProjectDependencies) = postProject
