@@ -13,7 +13,6 @@ const homeBtn = document.getElementsByClassName('nav-btn-home')[0];
 const charactersBtn = document.getElementsByClassName('nav-btn')[0];
 const comicsBtn = document.getElementsByClassName('nav-btn')[1];
 const moviesBtn = document.getElementsByClassName('nav-btn')[2];
-const storiesBtn = document.getElementsByClassName('nav-btn')[3];
 
 homeBtn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -82,29 +81,6 @@ comicsBtn.addEventListener('click', (e) => {
   setTimeout(() => {
     comics.map((x) => {
       container.innerHTML += htmlCreator.returnCard(x.imageUrl, x.title, x.description, "");
-    });
-
-    loader.classList.replace('active', 'hidden');
-  }, 2000);
-});
-
-storiesBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-
-  container.innerHTML = '';
-  carousel.style.display = 'none';
-
-  let stories = [];
-
-  storyService.getStoriesList()
-    .then(response => response.map((x) => stories.push(x)));
-
-  loader.classList.replace('hidden', 'active');
-
-  setTimeout(() => {
-    const path = 'https://i.annihil.us/u/prod/marvel/images/OpenGraph-TW-1200x630';
-    stories.map((x) => {
-      container.innerHTML += htmlCreator.returnCard(path, 'jpg', x.title, x.description, "");
     });
 
     loader.classList.replace('active', 'hidden');
