@@ -28,6 +28,6 @@ namespace MarvelChronicles.Models
 
         public Genre? Genre { get; set; }
 
-        public HashSet<Character> Characters { get; set; } = new();
+        public HashSet<Character?> Characters { get; set; } = new();
     }
 }
