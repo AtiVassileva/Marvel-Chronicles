@@ -9,9 +9,10 @@ const loader = document.getElementsByClassName('loader')[0];
 const carousel = document.getElementsByClassName('carousel-wrapper')[0];
 
 const homeBtn = document.getElementsByClassName('nav-btn-home')[0];
+
 const charactersBtn = document.getElementsByClassName('nav-btn')[0];
-const comicsBtn = document.getElementsByClassName('nav-btn')[1];
-const moviesBtn = document.getElementsByClassName('nav-btn')[2];
+const comicsBtn = document.getElementsByClassName('nav-btn')[2];
+const moviesBtn = document.getElementsByClassName('nav-btn')[4];
 
 homeBtn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -34,7 +35,7 @@ charactersBtn.addEventListener('click', (e) => {
 
   setTimeout(() => {
     characters.map((x) => {
-      container.innerHTML += htmlCreator.returnCard(x.imageUrl, x.name, x.description, "");
+      container.innerHTML += htmlCreator.returnCard(x.imageUrl, x.name, x.description, 'Character');
     });
 
     loader.classList.replace('active', 'hidden');

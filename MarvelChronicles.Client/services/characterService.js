@@ -18,3 +18,18 @@ export const getCharacterList = async () => {
 
     return characters;
 };
+
+export const getCharacterCategory = async (characterId) => {
+    let categoryId = '';
+    let categoryName = '';
+    
+    await fetch(`https://localhost:7267/api/Characters/${characterId}`)
+    .then(response => response.json())
+    .then(result => categoryId = result.categoryId);
+
+    await fetch(`https://localhost:7267/api/Categories/${categoryId}`)
+    .then(response => response.json())
+    .then(result => categoryName = result.name);
+
+    return categoryName;
+};
