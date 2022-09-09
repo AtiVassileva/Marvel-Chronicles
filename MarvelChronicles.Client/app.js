@@ -1,7 +1,6 @@
 import * as characterService from './services/characterService.js';
 import * as comicService from './services/comicService.js';
 import * as movieService from './services/movieService.js';
-import * as storyService from './services/storyService.js';
 
 import * as htmlCreator from './js/htmlCreator.js';
 
