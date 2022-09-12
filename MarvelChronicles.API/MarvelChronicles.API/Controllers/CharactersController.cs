@@ -25,10 +25,10 @@ namespace MarvelChronicles.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Character>>> GetCharacters()
         {
-          if (_context.Characters == null)
-          {
-              return NotFound();
-          }
+            if (_context.Characters == null)
+            {
+                return NotFound();
+            }
             return await _context.Characters.ToListAsync();
         }
 
@@ -36,10 +36,10 @@ namespace MarvelChronicles.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Character>> GetCharacter(Guid id)
         {
-          if (_context.Characters == null)
-          {
-              return NotFound();
-          }
+            if (_context.Characters == null)
+            {
+                return NotFound();
+            }
             var character = await _context.Characters.FindAsync(id);
 
             if (character == null)
@@ -48,6 +48,21 @@ namespace MarvelChronicles.API.Controllers
             }
 
             return character;
+        }
+
+        [HttpGet("/api/Characters/{characterId}/category")]
+        public async Task<ActionResult<string>> GetCharacterCategory(Guid characterId)
+        {
+            var character = await _context.Characters.FindAsync(characterId);
+
+            if (character == null)
+            {
+                return NotFound();
+            }
+
+            var category = await _context.Categories.FindAsync(character.CategoryId);
+
+            return category?.Name != null ? category.Name : string.Empty;
         }
 
         // PUT: api/Characters/5
@@ -86,14 +101,10 @@ namespace MarvelChronicles.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Character>> PostCharacter(Character character)
         {
-          if (_context.Characters == null)
-          {
-              return Problem("Entity set 'ApplicationDbContext.Characters'  is null.");
-          }
             _context.Characters.Add(character);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCharacter", new { id = character.Id }, character);
+            return Ok(character.Id);
         }
 
         // DELETE: api/Characters/5

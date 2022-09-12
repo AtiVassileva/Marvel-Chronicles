@@ -35,10 +35,19 @@ charactersBtn.addEventListener('click', (e) => {
 
   setTimeout(() => {
     characters.map((x) => {
-      container.innerHTML += htmlCreator.returnCard(x.imageUrl, x.name, x.description, 'Character');
+
+      let categoryName = '';
+      characterService.getCharacterCategory(x.id)
+      .then(response => categoryName = response);
+
+      setTimeout(() => {
+        container.innerHTML += htmlCreator.returnCard(x.imageUrl, x.name, x.description, categoryName);
+      }, 1000);
     });
 
-    loader.classList.replace('active', 'hidden');
+    setTimeout(() => {
+      loader.classList.replace('active', 'hidden');
+    }, 1000);
   }, 2000);
 
 });

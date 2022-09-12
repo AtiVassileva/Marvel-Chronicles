@@ -20,16 +20,11 @@ export const getCharacterList = async () => {
 };
 
 export const getCharacterCategory = async (characterId) => {
-    let categoryId = '';
-    let categoryName = '';
-    
-    await fetch(`https://localhost:7267/api/Characters/${characterId}`)
-    .then(response => response.json())
-    .then(result => categoryId = result.categoryId);
+    let characterCategory = '';
 
-    await fetch(`https://localhost:7267/api/Categories/${categoryId}`)
-    .then(response => response.json())
-    .then(result => categoryName = result.name);
+    await fetch(`https://localhost:7267/api/Characters/${characterId}/category`, requestOptions)
+    .then(response => response.text())
+    .then(result => characterCategory = result);
 
-    return categoryName;
+    return characterCategory;
 };
