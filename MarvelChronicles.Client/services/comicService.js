@@ -10,11 +10,6 @@ const requestOptions = {
 };
 
 export const getComicsList = async () => {
-    let comics = [];
-
-    await fetch(comicsURL, requestOptions)
-        .then(response => response.json())
-        .then(result =>  comics = result);
-
-    return comics;
+    return await fetch(comicsURL, requestOptions)
+        .then(response => response.json());
 };

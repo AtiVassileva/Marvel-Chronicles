@@ -50,6 +50,21 @@ namespace MarvelChronicles.API.Controllers
             return movie;
         }
 
+        [HttpGet("/api/Movies/{movieId}/genre")]
+        public async Task<ActionResult<string>> GetMovieGenre(Guid movieId)
+        {
+            var movie = await _context.Movies.FindAsync(movieId);
+
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            var genre = await _context.Genres.FindAsync(movie.GenreId);
+
+            return genre?.Name != null ? genre.Name : string.Empty;
+        }
+
         // PUT: api/Movies/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -86,14 +101,10 @@ namespace MarvelChronicles.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Movie>> PostMovie(Movie movie)
         {
-          if (_context.Movies == null)
-          {
-              return Problem("Entity set 'ApplicationDbContext.Movies'  is null.");
-          }
             _context.Movies.Add(movie);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMovie", new { id = movie.Id }, movie);
+            return Ok(movie.Id);
         }
 
         // DELETE: api/Movies/5

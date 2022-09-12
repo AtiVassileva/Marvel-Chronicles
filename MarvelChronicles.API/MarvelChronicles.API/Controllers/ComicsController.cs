@@ -25,10 +25,10 @@ namespace MarvelChronicles.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Comic>>> GetComics()
         {
-          if (_context.Comics == null)
-          {
-              return NotFound();
-          }
+            if (_context.Comics == null)
+            {
+                return NotFound();
+            }
             return await _context.Comics.ToListAsync();
         }
 
@@ -36,10 +36,10 @@ namespace MarvelChronicles.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Comic>> GetComic(Guid id)
         {
-          if (_context.Comics == null)
-          {
-              return NotFound();
-          }
+            if (_context.Comics == null)
+            {
+                return NotFound();
+            }
             var comic = await _context.Comics.FindAsync(id);
 
             if (comic == null)
@@ -86,14 +86,10 @@ namespace MarvelChronicles.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Comic>> PostComic(Comic comic)
         {
-          if (_context.Comics == null)
-          {
-              return Problem("Entity set 'ApplicationDbContext.Comics'  is null.");
-          }
             _context.Comics.Add(comic);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetComic", new { id = comic.Id }, comic);
+            return Ok(comic.Id);
         }
 
         // DELETE: api/Comics/5

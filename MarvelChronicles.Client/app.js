@@ -69,10 +69,18 @@ moviesBtn.addEventListener('click', (e) => {
 
   setTimeout(() => {
     movies.map((x) => {
-      container.innerHTML += htmlCreator.returnCard(x.imageUrl, x.title, x.description, "");
+      let genreName = '';
+      movieService.getMovieGenre(x.id)
+        .then(response => genreName = response);
+
+      setTimeout(() => {
+        container.innerHTML += htmlCreator.returnCard(x.imageUrl, x.title, x.description, genreName);
+      }, 1000);
     });
 
-    loader.classList.replace('active', 'hidden');
+    setTimeout(() => {
+      loader.classList.replace('active', 'hidden');
+    }, 1000);
   }, 2000);
 });
 
@@ -91,7 +99,7 @@ comicsBtn.addEventListener('click', (e) => {
 
   setTimeout(() => {
     comics.map((x) => {
-      container.innerHTML += htmlCreator.returnCard(x.imageUrl, x.title, x.description, "");
+      container.innerHTML += htmlCreator.returnCard(x.imageUrl, x.title, x.description, "Comic");
     });
 
     loader.classList.replace('active', 'hidden');

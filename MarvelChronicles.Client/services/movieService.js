@@ -10,11 +10,11 @@ const requestOptions = {
 };
 
 export const getMoviesList = async () => {
-    let movies = [];
+    return await fetch(moviesUrl, requestOptions)
+        .then(response => response.json());
+};
 
-    await fetch(moviesUrl, requestOptions)
-        .then(response => response.json())
-        .then(result =>  movies = result);
-
-    return movies;
+export const getMovieGenre = async (movieId) => {
+    return await fetch(`https://localhost:7267/api/Movies/${movieId}/genre`, requestOptions)
+        .then(response => response.text());
 };
