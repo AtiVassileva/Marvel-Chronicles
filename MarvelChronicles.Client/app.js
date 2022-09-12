@@ -141,6 +141,7 @@ characterForm.addEventListener('submit', (e) => {
 
   characterService.createCharacter(characterData);
 
+  characterForm.reset();
   carousel.style.display = 'block';
   characterForm.style.display = 'none';
 });
