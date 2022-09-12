@@ -67,6 +67,7 @@ body {
   border: 2px solid black;
   border-radius: 15px;
   margin-right: 10px;
+  text-decoration: none;
 }
 
 .nav-btn:hover {
@@ -81,6 +82,7 @@ body {
   cursor: pointer;
   text-transform: uppercase;
   font-size: 20px;
+  text-decoration: none;
 }
 
 /* Carousel */
@@ -257,9 +259,10 @@ img {
   background-color: #000000;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 900px;
+  height: 650px;
   padding: 20px;
   width: 700px;
+  margin: 50px;
 }
 
 .title {
@@ -359,7 +362,7 @@ img {
   cursor: pointer;
   font-size: 18px;
   height: 50px;
-  margin-top: 100px;
+  margin-top: 20px;
   /* outline: 0; */
   text-align: center;
   width: 100%;

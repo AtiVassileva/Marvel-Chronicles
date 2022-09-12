@@ -1,25 +1,32 @@
 import * as characterService from './services/characterService.js';
 import * as comicService from './services/comicService.js';
 import * as movieService from './services/movieService.js';
-
 import * as htmlCreator from './js/htmlCreator.js';
 
+window.addEventListener('load', (e) => {
+
 const container = document.getElementsByClassName('container')[0];
+
 const loader = document.getElementsByClassName('loader')[0];
 const carousel = document.getElementsByClassName('carousel-wrapper')[0];
 
 const homeBtn = document.getElementsByClassName('nav-btn-home')[0];
 
 const charactersBtn = document.getElementsByClassName('nav-btn')[0];
+const createCharacterBtn = document.getElementsByClassName('nav-btn')[1];
+
 const comicsBtn = document.getElementsByClassName('nav-btn')[2];
+
 const moviesBtn = document.getElementsByClassName('nav-btn')[4];
 
 const characterForm = document.getElementsByClassName('character-form')[0];
 
 homeBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  carousel.style.display = 'block';
+
   container.innerHTML = '';
+  carousel.style.display = 'block';
+  characterForm.style.display = 'none';
 });
 
 charactersBtn.addEventListener('click', (e) => {
@@ -27,6 +34,7 @@ charactersBtn.addEventListener('click', (e) => {
 
   container.innerHTML = '';
   carousel.style.display = 'none';
+  characterForm.style.display = 'none';
 
   let characters = [];
 
@@ -50,8 +58,17 @@ charactersBtn.addEventListener('click', (e) => {
     setTimeout(() => {
       loader.classList.replace('active', 'hidden');
     }, 1000);
+
   }, 2000);
 
+});
+
+createCharacterBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  container.innerHTML = '';
+  carousel.style.display = 'none';
+  characterForm.style.display = 'block';
 });
 
 moviesBtn.addEventListener('click', (e) => {
@@ -59,6 +76,7 @@ moviesBtn.addEventListener('click', (e) => {
 
   container.innerHTML = '';
   carousel.style.display = 'none';
+  characterForm.style.display = 'none';
 
   let movies = [];
 
@@ -86,9 +104,10 @@ moviesBtn.addEventListener('click', (e) => {
 
 comicsBtn.addEventListener('click', (e) => {
   e.preventDefault();
-
+  
   container.innerHTML = '';
   carousel.style.display = 'none';
+  characterForm.style.display = 'none';
 
   let comics = [];
 
@@ -121,4 +140,8 @@ characterForm.addEventListener('submit', (e) => {
   };
 
   characterService.createCharacter(characterData);
+
+  carousel.style.display = 'block';
+  characterForm.style.display = 'none';
+});
 });
