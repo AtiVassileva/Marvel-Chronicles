@@ -45,7 +45,36 @@
     </div>
     <div class="loader hidden"></div>
     <div class="container">
-
+        <form class="form character-form">
+            <div class="title">Add new character</div>
+            <div class="input-container ic1">
+                <input id="name" class="input" type="text" placeholder=" " name="name"/>
+                <div class="cut"></div>
+                <label for="name" class="placeholder">Name</label>
+            </div>
+            <div class="input-container ic2">
+                <input id="age" class="input" type="number" placeholder=" " name="age" />
+                <div class="cut"></div>
+                <label for="age" class="placeholder">Age</label>
+            </div>
+            <div class="input-container ic2">
+                <input id="imageUrl" class="input" type="text" placeholder=" " name="imageUrl"/>
+                <div class="cut cut-short"></div>
+                <label for="imageUrl" class="placeholder">Image URL</label>
+            </div>
+            <div class="input-container ic2">
+                <textarea id="description" class="input" placeholder=" " name="description" rows="4" cols="50"></textarea>
+                <div class="cut cut-short"></div>
+                <label for="description" class="placeholder">Description</label>
+            </div>
+            <div class="input-container ic2">
+                <select class="category-selector"name="category" id="">
+                    <option value="Superhero">Superhero</option>
+                    <option value="Villain">Villain</option>
+                </select>
+            </div>
+            <button type="text" class="submit">Submit</button>
+        </form>
     </div>
 
     <footer class="footer">

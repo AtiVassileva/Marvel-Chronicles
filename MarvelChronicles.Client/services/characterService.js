@@ -10,21 +10,26 @@ const requestOptions = {
 };
 
 export const getCharacterList = async () => {
-    let characters = [];
-
-    await fetch(charactersURL, requestOptions)
-        .then(response => response.json())
-        .then(result =>  characters = result);
-
-    return characters;
+    return await fetch(charactersURL, requestOptions)
+        .then(response => response.json());
 };
 
 export const getCharacterCategory = async (characterId) => {
-    let characterCategory = '';
+    return await fetch(`https://localhost:7267/api/Characters/${characterId}/category`, requestOptions)
+        .then(response => response.text());
+};
 
-    await fetch(`https://localhost:7267/api/Characters/${characterId}/category`, requestOptions)
-    .then(response => response.text())
-    .then(result => characterCategory = result);
+export const createCharacter = async (characterData) => {
+    let response = await fetch('https://localhost:7267/api/Characters',
+        {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify({ ...characterData })
+        });
 
-    return characterCategory;
+    let result = await response.text();
+
+    return result;
 };

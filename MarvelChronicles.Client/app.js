@@ -14,6 +14,8 @@ const charactersBtn = document.getElementsByClassName('nav-btn')[0];
 const comicsBtn = document.getElementsByClassName('nav-btn')[2];
 const moviesBtn = document.getElementsByClassName('nav-btn')[4];
 
+const characterForm = document.getElementsByClassName('character-form')[0];
+
 homeBtn.addEventListener('click', (e) => {
   e.preventDefault();
   carousel.style.display = 'block';
@@ -38,7 +40,7 @@ charactersBtn.addEventListener('click', (e) => {
 
       let categoryName = '';
       characterService.getCharacterCategory(x.id)
-      .then(response => categoryName = response);
+        .then(response => categoryName = response);
 
       setTimeout(() => {
         container.innerHTML += htmlCreator.returnCard(x.imageUrl, x.name, x.description, categoryName);
@@ -94,4 +96,21 @@ comicsBtn.addEventListener('click', (e) => {
 
     loader.classList.replace('active', 'hidden');
   }, 2000);
+});
+
+characterForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  let formData = new FormData(e.currentTarget);
+  let { name, age, imageUrl, description, category } = Object.fromEntries(formData);
+
+  let characterData = {
+    name,
+    age,
+    imageUrl,
+    description,
+    categoryId: '6E2F695C-65D4-4EC5-CAB4-08DA924FAD7B'
+  };
+
+  characterService.createCharacter(characterData);
 });
