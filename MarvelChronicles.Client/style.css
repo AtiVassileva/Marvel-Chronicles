@@ -9,11 +9,12 @@
 }
 
 body {
+  margin: 0px;
+  padding: 0px;
   font-family: "Quicksand", sans-serif;
   display: grid;
   place-items: center;
   height: 100vh;
-  background: #7f7fd5;
   background: linear-gradient(to right, #000000, #8f2b2b, #9a0505);
 }
 
@@ -255,6 +256,11 @@ img {
 
 /* Form */
 
+.form-img {
+  height: 150px;
+  margin-bottom: 0px;
+}
+
 .form {
   background-color: #000000;
   border-radius: 20px;
@@ -263,6 +269,7 @@ img {
   padding: 20px;
   width: 700px;
   margin: 50px;
+  margin-top: -25px;
 }
 
 .title {
@@ -317,8 +324,8 @@ img {
   width: 50px;
 }
 
-.input:focus ~ .cut,
-.input:not(:placeholder-shown) ~ .cut {
+.input:focus~.cut,
+.input:not(:placeholder-shown)~.cut {
   transform: translateY(8px);
 }
 
@@ -334,16 +341,16 @@ img {
   top: 20px;
 }
 
-.input:focus ~ .placeholder,
-.input:not(:placeholder-shown) ~ .placeholder {
+.input:focus~.placeholder,
+.input:not(:placeholder-shown)~.placeholder {
   transform: translateY(-30px) translateX(10px) scale(0.75);
 }
 
-.input:not(:placeholder-shown) ~ .placeholder {
+.input:not(:placeholder-shown)~.placeholder {
   color: #808097;
 }
 
-.input:focus ~ .placeholder {
+.input:focus~.placeholder {
   color: #dc2f55;
 }
 
@@ -371,6 +378,7 @@ img {
 .submit:hover {
   background: #dd0505;
 }
+
 .submit:active {
   background-color: #9a0505;
 }
@@ -388,5 +396,5 @@ img {
 
 .footer-text {
   font-size: 16px;
-  color:rgb(255, 249, 249);
+  color: rgb(255, 249, 249);
 }

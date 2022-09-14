@@ -9,7 +9,7 @@ const requestOptions = {
     mode: 'cors'
 };
 
-export const getCategoryByName = (name) => {
-    return fetch(`https://localhost:7267/api/Categories/name/${name}`, requestOptions)
+export const getCategoryByName = async (name) => {
+    return await fetch(`https://localhost:7267/api/Categories/name/${name}`, requestOptions)
     .then(response => response.json());
 };
