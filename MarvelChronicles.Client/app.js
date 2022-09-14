@@ -1,6 +1,7 @@
 import * as characterService from './services/characterService.js';
 import * as comicService from './services/comicService.js';
 import * as movieService from './services/movieService.js';
+import * as categoryService from './services/categoryService.js';
 import * as htmlCreator from './js/htmlCreator.js';
 
 window.addEventListener('load', (e) => {
@@ -131,15 +132,22 @@ characterForm.addEventListener('submit', (e) => {
   let formData = new FormData(e.currentTarget);
   let { name, age, imageUrl, description, category } = Object.fromEntries(formData);
 
-  let characterData = {
-    name,
-    age,
-    imageUrl,
-    description,
-    categoryId: '6E2F695C-65D4-4EC5-CAB4-08DA924FAD7B'
-  };
+  let categoryId = '';
 
-  characterService.createCharacter(characterData);
+  categoryService.getCategoryByName(category)
+  .then(result => categoryId = result.id);
+
+  setTimeout(() => {
+    let characterData = {
+      name,
+      age,
+      imageUrl,
+      description,
+      categoryId
+    };
+
+    characterService.createCharacter(characterData);
+  }, 1000);
 
   characterForm.reset();
   carousel.style.display = 'block';

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MarvelChronicles.Data;
 using MarvelChronicles.Models;
@@ -36,11 +31,21 @@ namespace MarvelChronicles.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Category>> GetCategory(Guid id)
         {
-          if (_context.Categories == null)
-          {
-              return NotFound();
-          }
             var category = await _context.Categories.FindAsync(id);
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            return category;
+        }
+
+        [HttpGet("/api/Categories/name/{name}")]
+        public async Task<ActionResult<Category>> GetCategoryByName(string name)
+        {
+            var category = await _context.Categories
+                .FirstOrDefaultAsync(c => c.Name == name);
 
             if (category == null)
             {
