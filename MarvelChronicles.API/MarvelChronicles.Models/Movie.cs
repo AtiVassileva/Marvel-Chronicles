@@ -27,7 +27,5 @@ namespace MarvelChronicles.Models
         public Guid GenreId { get; set; }
 
         public Genre? Genre { get; set; }
-
-        public HashSet<Character?> Characters { get; set; } = new();
     }
 }

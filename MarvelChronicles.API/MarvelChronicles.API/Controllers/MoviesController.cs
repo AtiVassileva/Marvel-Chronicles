@@ -18,23 +18,13 @@ namespace MarvelChronicles.API.Controllers
 
         // GET: api/Movies
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
-        {
-          if (_context.Movies == null)
-          {
-              return NotFound();
-          }
-            return await _context.Movies.ToListAsync();
-        }
+        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies() 
+            => await _context.Movies.ToListAsync();
 
         // GET: api/Movies/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Movie>> GetMovie(Guid id)
         {
-          if (_context.Movies == null)
-          {
-              return NotFound();
-          }
             var movie = await _context.Movies.FindAsync(id);
 
             if (movie == null)
@@ -98,7 +88,6 @@ namespace MarvelChronicles.API.Controllers
         {
             _context.Movies.Add(movie);
             await _context.SaveChangesAsync();
-
             return Ok(movie.Id);
         }
 
@@ -106,10 +95,6 @@ namespace MarvelChronicles.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMovie(Guid id)
         {
-            if (_context.Movies == null)
-            {
-                return NotFound();
-            }
             var movie = await _context.Movies.FindAsync(id);
             if (movie == null)
             {

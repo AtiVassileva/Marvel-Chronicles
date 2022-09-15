@@ -19,8 +19,10 @@ window.addEventListener('load', (e) => {
   const comicsBtn = document.getElementsByClassName('nav-btn')[2];
 
   const moviesBtn = document.getElementsByClassName('nav-btn')[4];
+  const createMovieBtn = document.getElementsByClassName('nav-btn')[5];
 
   const characterForm = document.getElementsByClassName('character-form')[0];
+  const movieForm = document.getElementsByClassName('movie-form')[0];
 
   homeBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -156,5 +158,13 @@ window.addEventListener('load', (e) => {
     characterForm.reset();
     carousel.style.display = 'block';
     characterForm.style.display = 'none';
+  });
+
+  createMovieBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    container.innerHTML = '';
+    carousel.style.display = 'none';
+    movieForm.style.display = 'block';
   });
 });

@@ -24,7 +24,5 @@ namespace MarvelChronicles.Models
         public DateTime PremiereDate { get; set; }
 
         public decimal Price { get; set; }
-
-        public HashSet<Character> Characters { get; set; } = new();
     }
 }

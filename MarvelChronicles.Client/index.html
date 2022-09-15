@@ -9,7 +9,6 @@
 
     <link href="./favicon.ico" rel="icon">
     <link rel="stylesheet" href="./style.css">
-    <link href="./characters.html" rel="import" />
 </head>
 
 <body>
@@ -48,9 +47,6 @@
     <div class="container">
         
     </div>
-    <img src="https://www.lifepng.com/wp-content/uploads/2020/11/Spiderman-Lying-Down-png-hd.png"
-    class="form-img"
-    />
     <form class="form character-form" style="display: none;">
         <div class="title">Add new character</div>
         <div class="input-container ic1">
@@ -74,9 +70,48 @@
             <label for="description" class="placeholder">Description</label>
         </div>
         <div class="input-container ic2">
-            <select class="category-selector"name="category" id="">
+            <select class="category-selector"name="category">
                 <option value="Superhero">Superhero</option>
                 <option value="Villain">Villain</option>
+            </select>
+        </div>
+        <button type="text" class="submit">Submit</button>
+    </form>
+    <form class="form movie-form" style="display: none;">
+        <div class="title">Add new movie</div>
+        <div class="input-container ic1">
+            <input id="title" class="input" type="text" placeholder=" " name="title"/>
+            <div class="cut"></div>
+            <label for="title" class="placeholder">Title</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="director" class="input" type="number" placeholder=" " name="director" />
+            <div class="cut"></div>
+            <label for="director" class="placeholder">Director</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="imageUrl" class="input" type="text" placeholder=" " name="imageUrl"/>
+            <div class="cut cut-short"></div>
+            <label for="imageUrl" class="placeholder">Image URL</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="premiereDate" class="input" type="date" placeholder=" " name="premiereDate"/>
+            <div class="cut cut-short"></div>
+            <label for="premiereDate" class="placeholder">Premiere Date</label>
+        </div>
+        <div class="input-container ic2">
+            <textarea id="description" class="input" placeholder=" " name="description" rows="4" cols="50"></textarea>
+            <div class="cut cut-short"></div>
+            <label for="description" class="placeholder">Description</label>
+        </div>
+        <div class="input-container ic2">
+            <select class="selector"name="genre">
+                <option value="Fantasy">Fantasy</option>
+                <option value="Action">Action</option>
+                <option value="Drama">Drama</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Adventure">Adventure</option>
             </select>
         </div>
         <button type="text" class="submit">Submit</button>
@@ -85,7 +120,6 @@
         <div class="footer-text">Copyright © Marvel Chronicles</div>
     </footer>
 
-    <iframe src="./characters.html" frameborder="0" style="display: none;"></iframe>
     <script src="./app.js" type="module"></script>
 
     <script src="./js/htmlCreator.js" type="module"></script>

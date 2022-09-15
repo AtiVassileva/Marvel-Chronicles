@@ -24,9 +24,5 @@ namespace MarvelChronicles.Models
         [Required]
         public Guid CategoryId { get; set; }
         public Category? Category { get; set; }
-
-        public HashSet<Comic> Comics { get; set; } = new();
-
-        public HashSet<Movie> Movies { get; set; } = new();
     }
 }
