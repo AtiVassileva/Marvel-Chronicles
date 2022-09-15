@@ -2,6 +2,7 @@ import * as characterService from './services/characterService.js';
 import * as comicService from './services/comicService.js';
 import * as movieService from './services/movieService.js';
 import * as categoryService from './services/categoryService.js';
+import * as genreService from './services/genreService.js';
 import * as htmlCreator from './js/htmlCreator.js';
 
 window.addEventListener('load', (e) => {
@@ -30,6 +31,7 @@ window.addEventListener('load', (e) => {
     container.innerHTML = '';
     carousel.style.display = 'block';
     characterForm.style.display = 'none';
+    movieForm.style.display = 'none';
   });
 
   charactersBtn.addEventListener('click', (e) => {
@@ -38,6 +40,7 @@ window.addEventListener('load', (e) => {
     container.innerHTML = '';
     carousel.style.display = 'none';
     characterForm.style.display = 'none';
+    movieForm.style.display = 'none';
 
     let characters = [];
 
@@ -71,6 +74,7 @@ window.addEventListener('load', (e) => {
 
     container.innerHTML = '';
     carousel.style.display = 'none';
+    movieForm.style.display = 'none';
     characterForm.style.display = 'block';
   });
 
@@ -80,6 +84,7 @@ window.addEventListener('load', (e) => {
     container.innerHTML = '';
     carousel.style.display = 'none';
     characterForm.style.display = 'none';
+    movieForm.style.display = 'none';
 
     let movies = [];
 
@@ -111,6 +116,7 @@ window.addEventListener('load', (e) => {
     container.innerHTML = '';
     carousel.style.display = 'none';
     characterForm.style.display = 'none';
+    movieForm.style.display = 'none';
 
     let comics = [];
 
@@ -165,6 +171,40 @@ window.addEventListener('load', (e) => {
 
     container.innerHTML = '';
     carousel.style.display = 'none';
+    characterForm.style.display = 'none';
     movieForm.style.display = 'block';
+  });
+
+  movieForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    let formData = new FormData(e.currentTarget);
+    let {title, description, imageUrl, director, premiereDate, genre} = Object.fromEntries(formData);
+    
+    if (!title || !director || !imageUrl || !description || !premiereDate) {
+      return;
+    }
+    
+    let genreId = '';
+
+    genreService.getGenreByName(genre)
+      .then(result => genreId = result.id);
+
+    setTimeout(() => {
+      let movieData = {
+        title,
+        imageUrl,
+        director,
+        premiereDate,
+        description,
+        genreId
+      };
+
+      movieService.createMovie(movieData);
+    }, 1000);
+
+    movieForm.reset();
+    carousel.style.display = 'block';
+    movieForm.style.display = 'none';
   });
 });
