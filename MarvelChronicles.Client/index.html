@@ -75,7 +75,7 @@
                 <option value="Villain">Villain</option>
             </select>
         </div>
-        <button type="text" class="submit">Submit</button>
+        <button type="submit" class="submit">Submit</button>
     </form>
     <form class="form movie-form" style="display: none;">
         <div class="title">Add new movie</div>
@@ -114,7 +114,41 @@
                 <option value="Adventure">Adventure</option>
             </select>
         </div>
-        <button type="text" class="submit">Submit</button>
+        <button type="submit" class="submit">Submit</button>
+    </form>
+    <form class="form comic-form" style="display: none;">
+        <div class="title">Add new comic</div>
+        <div class="input-container ic1">
+            <input id="title" class="input" type="text" placeholder=" " name="title"/>
+            <div class="cut"></div>
+            <label for="title" class="placeholder">Title</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="author" class="input" type="text" placeholder=" " name="author" />
+            <div class="cut"></div>
+            <label for="author" class="placeholder">Author</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="imageUrl" class="input" type="text" placeholder=" " name="imageUrl"/>
+            <div class="cut cut-short"></div>
+            <label for="imageUrl" class="placeholder">Image URL</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="premiereDate" class="input" type="date" placeholder=" " name="premiereDate"/>
+            <div class="cut cut-short"></div>
+            <label for="premiereDate" class="placeholder">Premiere Date</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="price" class="input" type="number" placeholder=" " name="price"/>
+            <div class="cut cut-short"></div>
+            <label for="price" class="placeholder">Price</label>
+        </div>
+        <div class="input-container ic2">
+            <textarea id="description" class="input" placeholder=" " name="description" rows="4" cols="50"></textarea>
+            <div class="cut cut-short"></div>
+            <label for="description" class="placeholder">Description</label>
+        </div>
+        <button type="submit" class="submit">Submit</button>
     </form>
     <footer class="footer">
         <div class="footer-text">Copyright © Marvel Chronicles</div>

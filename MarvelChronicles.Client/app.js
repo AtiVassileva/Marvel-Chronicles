@@ -5,7 +5,7 @@ import * as categoryService from './services/categoryService.js';
 import * as genreService from './services/genreService.js';
 import * as htmlCreator from './js/htmlCreator.js';
 
-window.addEventListener('load', (e) => {
+window.addEventListener('load', () => {
 
   const container = document.getElementsByClassName('container')[0];
 
@@ -18,11 +18,13 @@ window.addEventListener('load', (e) => {
   const createCharacterBtn = document.getElementsByClassName('nav-btn')[1];
 
   const comicsBtn = document.getElementsByClassName('nav-btn')[2];
+  const createComicBtn = document.getElementsByClassName('nav-btn')[3];
 
   const moviesBtn = document.getElementsByClassName('nav-btn')[4];
   const createMovieBtn = document.getElementsByClassName('nav-btn')[5];
 
   const characterForm = document.getElementsByClassName('character-form')[0];
+  const comicForm = document.getElementsByClassName('comic-form')[0];
   const movieForm = document.getElementsByClassName('movie-form')[0];
 
   homeBtn.addEventListener('click', (e) => {
@@ -32,6 +34,7 @@ window.addEventListener('load', (e) => {
     carousel.style.display = 'block';
     characterForm.style.display = 'none';
     movieForm.style.display = 'none';
+    comicForm.style.display = 'none';
   });
 
   charactersBtn.addEventListener('click', (e) => {
@@ -41,6 +44,7 @@ window.addEventListener('load', (e) => {
     carousel.style.display = 'none';
     characterForm.style.display = 'none';
     movieForm.style.display = 'none';
+    comicForm.style.display = 'none';
 
     let characters = [];
 
@@ -69,15 +73,6 @@ window.addEventListener('load', (e) => {
 
   });
 
-  createCharacterBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    container.innerHTML = '';
-    carousel.style.display = 'none';
-    movieForm.style.display = 'none';
-    characterForm.style.display = 'block';
-  });
-
   moviesBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -85,6 +80,7 @@ window.addEventListener('load', (e) => {
     carousel.style.display = 'none';
     characterForm.style.display = 'none';
     movieForm.style.display = 'none';
+    comicForm.style.display = 'none';
 
     let movies = [];
 
@@ -117,6 +113,7 @@ window.addEventListener('load', (e) => {
     carousel.style.display = 'none';
     characterForm.style.display = 'none';
     movieForm.style.display = 'none';
+    comicForm.style.display = 'none';
 
     let comics = [];
 
@@ -134,6 +131,16 @@ window.addEventListener('load', (e) => {
     }, 2000);
   });
 
+  createCharacterBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    container.innerHTML = '';
+    carousel.style.display = 'none';
+    movieForm.style.display = 'none';
+    comicForm.style.display = 'none';
+    characterForm.style.display = 'block';
+  });
+
   characterForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -143,7 +150,7 @@ window.addEventListener('load', (e) => {
     if (!name || !age || !imageUrl || !description) {
       return;
     }
-    
+
     let categoryId = '';
 
     categoryService.getCategoryByName(category)
@@ -166,12 +173,49 @@ window.addEventListener('load', (e) => {
     characterForm.style.display = 'none';
   });
 
+  createComicBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    container.innerHTML = '';
+    carousel.style.display = 'none';
+    characterForm.style.display = 'none';
+    movieForm.style.display = 'none';
+    comicForm.style.display = 'block';
+  });
+
+  comicForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    let formData = new FormData(e.currentTarget);
+    let { title, description, author, imageUrl, price, premiereDate } = Object.fromEntries(formData);
+
+    if (!title || !description || !author || !imageUrl || !price || !premiereDate) {
+      return;
+    }
+
+    let comicData = {
+      title,
+      description,
+      author,
+      imageUrl,
+      price,
+      premiereDate
+    };
+
+    comicService.createComic(comicData);
+
+    comicForm.reset();
+    carousel.style.display = 'block';
+    comicForm.style.display = 'none';
+  });
+
   createMovieBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     container.innerHTML = '';
     carousel.style.display = 'none';
     characterForm.style.display = 'none';
+    comicForm.style.display = 'none';
     movieForm.style.display = 'block';
   });
 
@@ -179,12 +223,12 @@ window.addEventListener('load', (e) => {
     e.preventDefault();
 
     let formData = new FormData(e.currentTarget);
-    let {title, description, imageUrl, director, premiereDate, genre} = Object.fromEntries(formData);
-    
+    let { title, description, imageUrl, director, premiereDate, genre } = Object.fromEntries(formData);
+
     if (!title || !director || !imageUrl || !description || !premiereDate) {
       return;
     }
-    
+
     let genreId = '';
 
     genreService.getGenreByName(genre)
@@ -207,4 +251,5 @@ window.addEventListener('load', (e) => {
     carousel.style.display = 'block';
     movieForm.style.display = 'none';
   });
+
 });
