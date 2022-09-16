@@ -5,6 +5,11 @@ import * as categoryService from './services/categoryService.js';
 import * as genreService from './services/genreService.js';
 import * as htmlCreator from './js/htmlCreator.js';
 
+import { redirectToHome } from './js/homeHandler.js';
+import { handleCharacterListing } from './js/characterListHandler.js';
+import { handleMovieListing } from './js/movieListHandler.js';
+import { handleComicListing } from './js/comicListHandler.js';
+
 window.addEventListener('load', () => {
 
   const container = document.getElementsByClassName('container')[0];
@@ -27,109 +32,13 @@ window.addEventListener('load', () => {
   const comicForm = document.getElementsByClassName('comic-form')[0];
   const movieForm = document.getElementsByClassName('movie-form')[0];
 
-  homeBtn.addEventListener('click', (e) => {
-    e.preventDefault();
+  homeBtn.addEventListener('click', (e) => redirectToHome(e));
 
-    container.innerHTML = '';
-    carousel.style.display = 'block';
-    characterForm.style.display = 'none';
-    movieForm.style.display = 'none';
-    comicForm.style.display = 'none';
-  });
+  charactersBtn.addEventListener('click', (e) => handleCharacterListing(e));
 
-  charactersBtn.addEventListener('click', (e) => {
-    e.preventDefault();
+  moviesBtn.addEventListener('click', (e) => handleMovieListing(e));
 
-    container.innerHTML = '';
-    carousel.style.display = 'none';
-    characterForm.style.display = 'none';
-    movieForm.style.display = 'none';
-    comicForm.style.display = 'none';
-
-    let characters = [];
-
-    characterService.getCharacterList()
-      .then(response => response.map((x) => characters.push(x)));
-
-    loader.classList.replace('hidden', 'active');
-
-    setTimeout(() => {
-      characters.map((x) => {
-
-        let categoryName = '';
-        characterService.getCharacterCategory(x.id)
-          .then(response => categoryName = response);
-
-        setTimeout(() => {
-          container.innerHTML += htmlCreator.returnCard(x.imageUrl, x.name, x.description, categoryName);
-        }, 1000);
-      });
-
-      setTimeout(() => {
-        loader.classList.replace('active', 'hidden');
-      }, 1000);
-
-    }, 2000);
-
-  });
-
-  moviesBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    container.innerHTML = '';
-    carousel.style.display = 'none';
-    characterForm.style.display = 'none';
-    movieForm.style.display = 'none';
-    comicForm.style.display = 'none';
-
-    let movies = [];
-
-    movieService.getMoviesList()
-      .then(response => response.map((x) => movies.push(x)));
-
-    loader.classList.replace('hidden', 'active');
-
-    setTimeout(() => {
-      movies.map((x) => {
-        let genreName = '';
-        movieService.getMovieGenre(x.id)
-          .then(response => genreName = response);
-
-        setTimeout(() => {
-          container.innerHTML += htmlCreator.returnCard(x.imageUrl, x.title, x.description, genreName);
-        }, 1000);
-      });
-
-      setTimeout(() => {
-        loader.classList.replace('active', 'hidden');
-      }, 1000);
-    }, 2000);
-  });
-
-  comicsBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    container.innerHTML = '';
-    carousel.style.display = 'none';
-    characterForm.style.display = 'none';
-    movieForm.style.display = 'none';
-    comicForm.style.display = 'none';
-
-    let comics = [];
-
-    comicService.getComicsList()
-      .then(response => response.map((x) => comics.push(x)));
-
-    loader.classList.replace('hidden', 'active');
-
-    setTimeout(() => {
-      comics.map((x) => {
-        container.innerHTML += htmlCreator.returnCard(x.imageUrl, x.title, x.description, "Comic");
-      });
-
-      loader.classList.replace('active', 'hidden');
-    }, 2000);
-  });
+  comicsBtn.addEventListener('click', (e) => handleComicListing(e));
 
   createCharacterBtn.addEventListener('click', (e) => {
     e.preventDefault();
