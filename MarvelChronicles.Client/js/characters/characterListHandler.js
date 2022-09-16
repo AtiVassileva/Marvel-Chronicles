@@ -7,10 +7,10 @@ const characterForm = document.getElementsByClassName('character-form')[0];
 const comicForm = document.getElementsByClassName('comic-form')[0];
 const movieForm = document.getElementsByClassName('movie-form')[0];
 
-import { getMoviesList, getMovieGenre } from '../services/movieService.js';
-import { returnCard } from './htmlCreator.js';
+import { getCharacterList, getCharacterCategory } from '../../services/characterService.js';
+import { returnCard } from '../common/htmlCreator.js';
 
-export const handleMovieListing = (e) => {
+export const handleCharacterListing = (e) => {
     e.preventDefault();
 
     container.innerHTML = '';
@@ -19,26 +19,28 @@ export const handleMovieListing = (e) => {
     movieForm.style.display = 'none';
     comicForm.style.display = 'none';
 
-    let movies = [];
+    let characters = [];
 
-    getMoviesList()
-        .then(response => response.map((x) => movies.push(x)));
+    getCharacterList()
+        .then(response => response.map((x) => characters.push(x)));
 
     loader.classList.replace('hidden', 'active');
 
     setTimeout(() => {
-        movies.map((x) => {
-            let genreName = '';
-            getMovieGenre(x.id)
-                .then(response => genreName = response);
+        characters.map((x) => {
+
+            let categoryName = '';
+            getCharacterCategory(x.id)
+                .then(response => categoryName = response);
 
             setTimeout(() => {
-                container.innerHTML += returnCard(x.imageUrl, x.title, x.description, genreName);
+                container.innerHTML += returnCard(x.imageUrl, x.name, x.description, categoryName);
             }, 1000);
         });
 
         setTimeout(() => {
             loader.classList.replace('active', 'hidden');
         }, 1000);
+
     }, 2000);
 };

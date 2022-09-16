@@ -12,7 +12,10 @@ body {
   margin: 0px;
   padding: 0px;
   font-family: "Quicksand", sans-serif;
-  display: grid;
+  /* display: grid; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   place-items: center;
   height: 100vh;
   background: linear-gradient(to right, #000000, #8f2b2b, #9a0505);
@@ -29,6 +32,10 @@ body {
 }
 
 .loader {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
   border: 10px solid #0c0102;
   border-top: 10px solid #9a0505;
   border-radius: 50%;

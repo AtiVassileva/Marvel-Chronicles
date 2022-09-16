@@ -7,8 +7,8 @@ const characterForm = document.getElementsByClassName('character-form')[0];
 const comicForm = document.getElementsByClassName('comic-form')[0];
 const movieForm = document.getElementsByClassName('movie-form')[0];
 
-import { getComicsList } from '../services/comicService.js';
-import { returnCard } from './htmlCreator.js';
+import { getComicsList } from '../../services/comicService.js';
+import { returnCard } from '../common/htmlCreator.js';
 
 export const handleComicListing = (e) => {
     e.preventDefault();
