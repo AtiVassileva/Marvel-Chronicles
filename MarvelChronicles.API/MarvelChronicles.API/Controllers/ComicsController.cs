@@ -15,26 +15,14 @@ namespace MarvelChronicles.API.Controllers
         {
             _context = context;
         }
-
-        // GET: api/Comics
+        
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Comic>>> GetComics()
-        {
-            if (_context.Comics == null)
-            {
-                return NotFound();
-            }
-            return await _context.Comics.ToListAsync();
-        }
-
-        // GET: api/Comics/5
+        public async Task<ActionResult<IEnumerable<Comic>>> GetComics() 
+            => await _context.Comics.ToListAsync();
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<Comic>> GetComic(Guid id)
         {
-            if (_context.Comics == null)
-            {
-                return NotFound();
-            }
             var comic = await _context.Comics.FindAsync(id);
 
             if (comic == null)
@@ -44,9 +32,7 @@ namespace MarvelChronicles.API.Controllers
 
             return comic;
         }
-
-        // PUT: api/Comics/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPut("{id}")]
         public async Task<IActionResult> PutComic(Guid id, Comic comic)
         {
@@ -75,26 +61,18 @@ namespace MarvelChronicles.API.Controllers
 
             return NoContent();
         }
-
-        // POST: api/Comics
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPost]
         public async Task<ActionResult<Comic>> PostComic(Comic comic)
         {
             _context.Comics.Add(comic);
             await _context.SaveChangesAsync();
-
             return Ok(comic.Id);
         }
-
-        // DELETE: api/Comics/5
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteComic(Guid id)
         {
-            if (_context.Comics == null)
-            {
-                return NotFound();
-            }
             var comic = await _context.Comics.FindAsync(id);
             if (comic == null)
             {

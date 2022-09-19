@@ -15,19 +15,11 @@ namespace MarvelChronicles.API.Controllers
         {
             _context = context;
         }
-
-        // GET: api/Categories
+        
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
-        {
-          if (_context.Categories == null)
-          {
-              return NotFound();
-          }
-            return await _context.Categories.ToListAsync();
-        }
-
-        // GET: api/Categories/5
+        public async Task<ActionResult<IEnumerable<Category>>> GetCategories() 
+            => await _context.Categories.ToListAsync();
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<Category>> GetCategory(Guid id)
         {
@@ -54,9 +46,7 @@ namespace MarvelChronicles.API.Controllers
 
             return category;
         }
-
-        // PUT: api/Categories/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCategory(Guid id, Category category)
         {
@@ -85,30 +75,18 @@ namespace MarvelChronicles.API.Controllers
 
             return NoContent();
         }
-
-        // POST: api/Categories
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPost]
         public async Task<ActionResult<Category>> PostCategory(Category category)
         {
-          if (_context.Categories == null)
-          {
-              return Problem("Entity set 'ApplicationDbContext.Categories'  is null.");
-          }
             _context.Categories.Add(category);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetCategory", new { id = category.Id }, category);
+            return Ok(category.Id);
         }
-
-        // DELETE: api/Categories/5
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(Guid id)
         {
-            if (_context.Categories == null)
-            {
-                return NotFound();
-            }
             var category = await _context.Categories.FindAsync(id);
             if (category == null)
             {

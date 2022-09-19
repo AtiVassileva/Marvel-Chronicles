@@ -15,13 +15,11 @@ namespace MarvelChronicles.API.Controllers
         {
             _context = context;
         }
-
-        // GET: api/Genres
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Genre>>> GetGenres() 
             => await _context.Genres.ToListAsync();
-
-        // GET: api/Genres/5
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<Genre>> GetGenre(Guid id)
         {
@@ -48,8 +46,7 @@ namespace MarvelChronicles.API.Controllers
 
             return genre;
         }
-        // PUT: api/Genres/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
         [HttpPut("{id}")]
         public async Task<IActionResult> PutGenre(Guid id, Genre genre)
         {
@@ -78,9 +75,7 @@ namespace MarvelChronicles.API.Controllers
 
             return NoContent();
         }
-
-        // POST: api/Genres
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPost]
         public async Task<ActionResult<Genre>> PostGenre(Genre genre)
         {
@@ -88,8 +83,7 @@ namespace MarvelChronicles.API.Controllers
             await _context.SaveChangesAsync();
             return Ok(genre.Id);
         }
-
-        // DELETE: api/Genres/5
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGenre(Guid id)
         {

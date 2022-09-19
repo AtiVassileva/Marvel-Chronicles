@@ -15,13 +15,11 @@ namespace MarvelChronicles.API.Controllers
         {
             _context = context;
         }
-
-        // GET: api/Movies
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Movie>>> GetMovies() 
             => await _context.Movies.ToListAsync();
-
-        // GET: api/Movies/5
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<Movie>> GetMovie(Guid id)
         {
@@ -49,9 +47,7 @@ namespace MarvelChronicles.API.Controllers
 
             return genre?.Name != null ? genre.Name : string.Empty;
         }
-
-        // PUT: api/Movies/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMovie(Guid id, Movie movie)
         {
@@ -80,9 +76,7 @@ namespace MarvelChronicles.API.Controllers
 
             return NoContent();
         }
-
-        // POST: api/Movies
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPost]
         public async Task<ActionResult<Movie>> PostMovie(Movie movie)
         {
@@ -90,8 +84,7 @@ namespace MarvelChronicles.API.Controllers
             await _context.SaveChangesAsync();
             return Ok(movie.Id);
         }
-
-        // DELETE: api/Movies/5
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMovie(Guid id)
         {

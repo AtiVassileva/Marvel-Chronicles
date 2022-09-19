@@ -15,26 +15,13 @@ namespace MarvelChronicles.API.Controllers
         {
             _context = context;
         }
-
-        // GET: api/Characters
+        
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Character>>> GetCharacters()
-        {
-            if (_context.Characters == null)
-            {
-                return NotFound();
-            }
-            return await _context.Characters.ToListAsync();
-        }
-
-        // GET: api/Characters/5
+        public async Task<ActionResult<IEnumerable<Character>>> GetCharacters() => await _context.Characters.ToListAsync();
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<Character>> GetCharacter(Guid id)
         {
-            if (_context.Characters == null)
-            {
-                return NotFound();
-            }
             var character = await _context.Characters.FindAsync(id);
 
             if (character == null)
@@ -59,9 +46,7 @@ namespace MarvelChronicles.API.Controllers
 
             return category?.Name != null ? category.Name : string.Empty;
         }
-
-        // PUT: api/Characters/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCharacter(Guid id, Character character)
         {
@@ -90,26 +75,18 @@ namespace MarvelChronicles.API.Controllers
 
             return NoContent();
         }
-
-        // POST: api/Characters
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPost]
         public async Task<ActionResult<Character>> PostCharacter(Character character)
         {
             _context.Characters.Add(character);
             await _context.SaveChangesAsync();
-
             return Ok(character.Id);
         }
-
-        // DELETE: api/Characters/5
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCharacter(Guid id)
         {
-            if (_context.Characters == null)
-            {
-                return NotFound();
-            }
             var character = await _context.Characters.FindAsync(id);
             if (character == null)
             {
