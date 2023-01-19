@@ -1,2 +1,2 @@
-# NBA-Master
-Web application containing all kind of information about NBA.
+# Marvel Chronicles 
+Web application containing all kind of information about Marvel.
