@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel Chronicles</title>
+
+    <link href="./favicon.ico" rel="icon">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <nav class="navigation">
+        <button class="nav-btn-home">Marvel Chronicles</button>
+        <div>
+            <button class="nav-btn">Characters</button>
+            <button class="nav-btn">Add Character</button>
+            <button class="nav-btn">Comics</button>
+            <button class="nav-btn">Add Comic</button>
+            <button class="nav-btn">Movies</button>
+            <button class="nav-btn">Add Movie</button>
+        </div>
+    </nav>
+    <div class="carousel-wrapper">
+        <span id="item-1"></span>
+        <span id="item-2"></span>
+        <span id="item-3"></span>
+        <div class="carousel-item item-1">
+            <a href="#item-3" class="arrow-prev arrow"></a>
+            <a href="#item-2" class="arrow-next arrow"></a>
+        </div>
+
+        <div class="carousel-item item-2">
+            <a href="#item-1" class="arrow-prev arrow"></a>
+            <a href="#item-3" class="arrow-next arrow"></a>
+        </div>
+
+        <div class="carousel-item item-3">
+            <a href="#item-2" class="arrow-prev arrow"></a>
+            <a href="#item-1" class="arrow-next arrow"></a>
+        </div>
+
+    </div>
+    <div class="loader hidden"></div>
+    <div class="container">
+        
+    </div>
+    <form class="form character-form" style="display: none;">
+        <div class="title">Add new character</div>
+        <div class="input-container ic1">
+            <input id="name" class="input" type="text" placeholder=" " name="name"/>
+            <div class="cut"></div>
+            <label for="name" class="placeholder">Name</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="age" class="input" type="number" placeholder=" " name="age" />
+            <div class="cut"></div>
+            <label for="age" class="placeholder">Age</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="imageUrl" class="input" type="text" placeholder=" " name="imageUrl"/>
+            <div class="cut cut-short"></div>
+            <label for="imageUrl" class="placeholder">Image URL</label>
+        </div>
+        <div class="input-container ic2">
+            <textarea id="description" class="input" placeholder=" " name="description" rows="4" cols="50"></textarea>
+            <div class="cut cut-short"></div>
+            <label for="description" class="placeholder">Description</label>
+        </div>
+        <div class="input-container ic2">
+            <select class="category-selector"name="category">
+                <option value="Superhero">Superhero</option>
+                <option value="Villain">Villain</option>
+            </select>
+        </div>
+        <button type="submit" class="submit">Submit</button>
+    </form>
+    <form class="form movie-form" style="display: none;">
+        <div class="title">Add new movie</div>
+        <div class="input-container ic1">
+            <input id="title" class="input" type="text" placeholder=" " name="title"/>
+            <div class="cut"></div>
+            <label for="title" class="placeholder">Title</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="director" class="input" type="text" placeholder=" " name="director" />
+            <div class="cut"></div>
+            <label for="director" class="placeholder">Director</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="imageUrl" class="input" type="text" placeholder=" " name="imageUrl"/>
+            <div class="cut cut-short"></div>
+            <label for="imageUrl" class="placeholder">Image URL</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="premiereDate" class="input" type="date" placeholder=" " name="premiereDate"/>
+            <div class="cut cut-short"></div>
+            <label for="premiereDate" class="placeholder">Premiere Date</label>
+        </div>
+        <div class="input-container ic2">
+            <textarea id="description" class="input" placeholder=" " name="description" rows="4" cols="50"></textarea>
+            <div class="cut cut-short"></div>
+            <label for="description" class="placeholder">Description</label>
+        </div>
+        <div class="input-container ic2">
+            <select class="selector"name="genre">
+                <option value="Fantasy">Fantasy</option>
+                <option value="Action">Action</option>
+                <option value="Drama">Drama</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Adventure">Adventure</option>
+            </select>
+        </div>
+        <button type="submit" class="submit">Submit</button>
+    </form>
+    <form class="form comic-form" style="display: none;">
+        <div class="title">Add new comic</div>
+        <div class="input-container ic1">
+            <input id="title" class="input" type="text" placeholder=" " name="title"/>
+            <div class="cut"></div>
+            <label for="title" class="placeholder">Title</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="author" class="input" type="text" placeholder=" " name="author" />
+            <div class="cut"></div>
+            <label for="author" class="placeholder">Author</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="imageUrl" class="input" type="text" placeholder=" " name="imageUrl"/>
+            <div class="cut cut-short"></div>
+            <label for="imageUrl" class="placeholder">Image URL</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="premiereDate" class="input" type="date" placeholder=" " name="premiereDate"/>
+            <div class="cut cut-short"></div>
+            <label for="premiereDate" class="placeholder">Premiere Date</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="price" class="input" type="number" placeholder=" " name="price"/>
+            <div class="cut cut-short"></div>
+            <label for="price" class="placeholder">Price</label>
+        </div>
+        <div class="input-container ic2">
+            <textarea id="description" class="input" placeholder=" " name="description" rows="4" cols="50"></textarea>
+            <div class="cut cut-short"></div>
+            <label for="description" class="placeholder">Description</label>
+        </div>
+        <button type="submit" class="submit">Submit</button>
+    </form>
+    <footer class="footer">
+        <div class="footer-text">Copyright © Marvel Chronicles</div>
+    </footer>
+
+    <script src="./app.js" type="module"></script>
+
+    <script src="./js/htmlCreator.js" type="module"></script>
+    <script src="./js/homeHandler.js" type="module"></script>
+    <script src="./js/characterListHandler.js" type="module"></script>
+    <script src="./js/movieListHandler.js" type="module"></script>
+
+    <script src="./js/createCharacterHandler.js" type="module"></script>
+    <script src="./js/createComicHandler.js" type="module"></script>
+    <script src="./js/createMovieHandler.js" type="module"></script>
+
+    <script src="./services/characterService.js" type="module"></script>
+    <script src="./services/categoryService.js" type="module"></script>
+    <script src="./services/comicService.js" type="module"></script>
+    <script src="./services/movieService.js" type="module"></script>
+</body>
+
+</html>
